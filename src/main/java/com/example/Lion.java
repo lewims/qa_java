@@ -2,32 +2,24 @@ package com.example;
 
 import java.util.List;
 
-public class Lion {
+public class Feline extends Animal implements Predator {
 
-    boolean hasMane;
-    Predator predator;
-    public Lion(Predator predator, String sex) throws Exception {
-        this.predator = predator;
-        if ("Самец".equals(sex)) {
-            hasMane = true;
-        } else if ("Самка".equals(sex)) {
-            hasMane = false;
-        } else {
-            throw new Exception("Используйте допустимые значения пола животного - самец или самка");
-        }
+    @Override
+    public List<String> eatMeat() throws Exception {
+        return getFood("Хищник");
     }
 
-
+    @Override
+    public String getFamily() {
+        return "Кошачьи";
+    }
 
     public int getKittens() {
-        return predator.getOffspring();
+        return getKittens(1);
     }
 
-    public boolean doesHaveMane() {
-        return hasMane;
+    public int getKittens(int kittensCount) {
+        return kittensCount;
     }
 
-    public List<String> getFood() throws Exception {
-        return predator.eatMeat();
-    }
 }
